@@ -299,8 +299,8 @@ function Game:init_stacks()
     Game.sprites.p1_stack.y = P1_START_Y
 
     Game.sprites.p2_stack = Game:blank()
-    Game.sprites.p2_stack.y = P2_START_Y
     Game.sprites.p2_stack.name = 'player2'
+    Game.sprites.p2_stack.y = P2_START_Y
 end
 
 
