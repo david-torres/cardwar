@@ -29,7 +29,7 @@ function WarZone:add_card(player, x, y)
         end
 
         -- add card sprite
-        card_flip_channel = audio.play(Game.sfx.card_flip)
+        local card_flip_channel = audio.play(Game.sfx.card_flip)
         Game.sprites.p1_active_card = Game:card(player, self.p1_active_card, x, y)
 
     -- if player2 has not yet played a card, add it to the zone
@@ -49,7 +49,7 @@ function WarZone:add_card(player, x, y)
         end
 
         -- add card sprite
-        card_flip_channel = audio.play(Game.sfx.card_flip)
+        local card_flip_channel = audio.play(Game.sfx.card_flip)
         Game.sprites.p2_active_card = Game:card(player, self.p2_active_card, x, y)
     end
 
@@ -86,14 +86,11 @@ function WarZone:add_card(player, x, y)
 
             if Game.stacks.p1_war_stack.count() > 0 and Game.stacks.p2_war_stack.count() > 0 then
                 -- claim all war stacks
-                shuffle_channel = audio.play(Game.sfx.shuffle)
+                local shuffle_channel = audio.play(Game.sfx.shuffle)
                 Game.stacks.p1_stack.combine(Game.stacks.p1_war_stack.cards())
                 Game.stacks.p1_stack.combine(Game.stacks.p2_war_stack.cards())
 
                 -- cleanup war stacks
-                Game.stacks.p1_war_stack = nil
-                Game.stacks.p2_war_stack = nil
-
                 Game.stacks.p1_war_stack = Stack:new()
                 Game.stacks.p2_war_stack = Stack:new()
 
@@ -135,14 +132,11 @@ function WarZone:add_card(player, x, y)
 
             if Game.stacks.p1_war_stack.count() > 0 and Game.stacks.p2_war_stack.count() > 0 then
                 -- claim all war stacks
-                shuffle_channel = audio.play(Game.sfx.shuffle)
+                local shuffle_channel = audio.play(Game.sfx.shuffle)
                 Game.stacks.p2_stack.combine(Game.stacks.p1_war_stack.cards())
                 Game.stacks.p2_stack.combine(Game.stacks.p2_war_stack.cards())
 
                 -- cleanup war stacks
-                Game.stacks.p1_war_stack = nil
-                Game.stacks.p2_war_stack = nil
-
                 Game.stacks.p1_war_stack = Stack:new()
                 Game.stacks.p2_war_stack = Stack:new()
 
@@ -188,9 +182,9 @@ function WarZone:add_card(player, x, y)
             Game.stacks.p2_war_stack.add(self.p2_active_card)
 
             -- play card flip x3
-            card_flip_channel = audio.play(Game.sfx.card_flip)
-            card_flip_channel = audio.play(Game.sfx.card_flip)
-            card_flip_channel = audio.play(Game.sfx.card_flip)
+            local card_flip_channel = audio.play(Game.sfx.card_flip)
+            local card_flip_channel = audio.play(Game.sfx.card_flip)
+            local card_flip_channel = audio.play(Game.sfx.card_flip)
 
             self.p1_active_card = nil
             self.p2_active_card = nil
@@ -281,6 +275,13 @@ function Game:new_game()
     Game:listeners('add')
 end
 
+function Game:init_background()
+    -- add background texture
+    Game.sprites.bg = display.newImage('wood_table.png', 0, 0)
+    Game.sprites.bg.x = _H
+    Game.sprites.bg.y = _W
+end
+
 function Game:init_deal()
     Game.stacks.deck.shuffle(INIT_DECK_SHUFFLES)
     for i = 1, Game.stacks.deck.count() do
@@ -296,21 +297,12 @@ function Game:init_stacks()
     Game.sprites.p1_stack = Game:blank()
     Game.sprites.p1_stack.name = 'player1'
     Game.sprites.p1_stack.y = P1_START_Y
-    gameScreenGroup:insert(Game.sprites.p1_stack)
 
     Game.sprites.p2_stack = Game:blank()
     Game.sprites.p2_stack.y = P2_START_Y
     Game.sprites.p2_stack.name = 'player2'
-    gameScreenGroup:insert(Game.sprites.p2_stack)
 end
 
-function Game:init_background()
-    -- add background texture
-    Game.sprites.bg = display.newImage('wood_table.png', 0, 0)
-    Game.sprites.bg.x = _H
-    Game.sprites.bg.y = _W
-    gameScreenGroup:insert(Game.sprites.bg)
-end
 
 function Game:init_scores()
     -- add score text

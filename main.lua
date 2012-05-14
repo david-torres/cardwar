@@ -15,7 +15,6 @@ P1_START_Y = display.contentHeight - CARD_HEIGHT / 2
 P2_START_X = 0
 P2_START_Y = CARD_HEIGHT / 2
 
-gameScreenGroup = display.newGroup()
 _W = display.contentWidth / 2
 _H = display.contentHeight / 2
 
