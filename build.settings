@@ -1,0 +1,17 @@
+settings = {
+    orientation = {
+        default = 'landscapeRight'
+    },
+    ipad =
+    {
+        plist =
+        {
+            CFBundleIconFile = "Icon.png",
+            CFBundleIconFiles = {
+               "Icon.png", 
+               "Icon@2x.png", 
+               "Icon-72.png", 
+            },
+        },
+    }
+}
