@@ -278,8 +278,6 @@ end
 function Game:init_background()
     -- add background texture
     Game.sprites.bg = display.newImage('wood_table.png', 0, 0)
-    Game.sprites.bg.x = _H
-    Game.sprites.bg.y = _W
 end
 
 function Game:init_deal()
