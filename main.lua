@@ -2,6 +2,7 @@ require 'stack'
 require 'game'
 require 'game_debug'
 value = require('json')
+widget = require "widget"
 
 display.setStatusBar(display.HiddenStatusBar)
 
