@@ -135,7 +135,6 @@ function WarZone:add_card(player, x, y)
         self.p1_active_card = Game.stacks.p1_stack.deal()
 
         -- no more cards, you lose
-        -- TODO: this could potentially be a war
         if self.p1_active_card == nil then
             print('Player 1 lost')
         end
@@ -156,7 +155,6 @@ function WarZone:add_card(player, x, y)
         self.p2_active_card = Game.stacks.p2_stack.deal()
 
         -- no more cards, you lose
-        -- TODO: this could potentially be a war
         if self.p2_active_card == nil then
             print('Player 2 lost')
         end
@@ -283,7 +281,7 @@ function WarZone:compare_values(val1, val2)
 end
 
 --
--- Primary game
+-- Game controller
 --
 Game = {
     stacks = {
@@ -317,8 +315,7 @@ Game = {
 --
 function Game:new_game()
     -- load deck from json
-    local path = system.pathForFile('deck.json', system.DocumentsDirectory)
-    Game.stacks.deck = Stack:load(path)
+    Game.stacks.deck = Stack:load('Assets/deck.json')
 
     Game:init_background()
     Game:init_deal()

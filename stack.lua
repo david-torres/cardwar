@@ -116,6 +116,9 @@ function Stack:new (card_data)
     }
 end
 
+--
+-- Initialize stack contents from a file
+--
 function Stack:load (path)
     local file_handle, reason = io.open(path, 'r')
 
