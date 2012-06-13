@@ -258,8 +258,8 @@ Game = {
         p2_score = nil,
     },
     sfx = {
-        card_flip = audio.loadSound('card_flip.wav'),
-        shuffle = audio.loadSound('shuffle.wav'),
+        card_flip = audio.loadSound('Assets/card_flip.wav'),
+        shuffle = audio.loadSound('Assets/shuffle.wav'),
     }
 }
 
@@ -277,7 +277,9 @@ end
 
 function Game:init_background()
     -- add background texture
-    Game.sprites.bg = display.newImage('wood_table.png', 0, 0)
+    Game.sprites.bg = display.newImage('Assets/wood_table.png', 0, 0, true)
+    Game.sprites.bg.x = _W
+    Game.sprites.bg.y = _H
 end
 
 function Game:init_deal()
@@ -304,15 +306,15 @@ end
 
 function Game:init_scores()
     -- add score text
-    Game.sprites.p1_score = display.newText('26', P1_START_X + 8, P1_START_Y - 40, 'Arial', 54)
+    Game.sprites.p1_score = display.newText('26', P1_START_X + 8, P1_START_Y - 25, 'Arial', 32)
     Game.sprites.p1_score:setTextColor(255, 255, 255, 255)
 
-    Game.sprites.p2_score = display.newText('26', P2_START_X + 8, P2_START_Y - 40, 'Arial', 54)
+    Game.sprites.p2_score = display.newText('26', P2_START_X + 8, P2_START_Y - 25, 'Arial', 32)
     Game.sprites.p2_score:setTextColor(255, 255, 255, 255)
 end
 
 function Game:blank()
-    return display.newImage('card_back.png', 0, 0)
+    return display.newImage('Assets/card_back.png', 0, 0)
 end
 
 function Game:card(stack_owner, card, x, y)
@@ -323,16 +325,16 @@ function Game:card(stack_owner, card, x, y)
 
     local card_sprite = display.newGroup()
     if suit == 'Heart' then
-        card_sprite:insert(display.newImage('heart.png'))
+        card_sprite:insert(display.newImage('Assets/heart.png'))
         card_sprite:insert(value_text)
     elseif suit == 'Diamond' then
-        card_sprite:insert(display.newImage('diamond.png'))
+        card_sprite:insert(display.newImage('Assets/diamond.png'))
         card_sprite:insert(value_text)
     elseif suit == 'Club' then
-        card_sprite:insert(display.newImage('club.png'))
+        card_sprite:insert(display.newImage('Assets/club.png'))
         card_sprite:insert(value_text)
     elseif suit == 'Spade' then
-        card_sprite:insert(display.newImage('spade.png'))
+        card_sprite:insert(display.newImage('Assets/spade.png'))
         card_sprite:insert(value_text)
     end
 

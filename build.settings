@@ -1,16 +1,17 @@
 settings = {
     orientation = {
-        default = 'landscapeRight'
+        supported = {'landscapeLeft', 'landscapeRight'},
+        default = 'landscapeLeft'
     },
     ipad =
     {
         plist =
         {
-            CFBundleIconFile = "Icon.png",
+            CFBundleIconFile = "Assets/Icon.png",
             CFBundleIconFiles = {
-               "Icon.png", 
-               "Icon@2x.png", 
-               "Icon-72.png", 
+               "Assets/Icon.png", 
+               "Assets/Icon@2x.png", 
+               "Assets/Icon-72.png", 
             },
         },
     }

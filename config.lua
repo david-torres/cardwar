@@ -1,11 +1,6 @@
 application = {
     content = {
-        height = 1024,
-        width = 768,
-        fps = 60,
-        imageSuffix =
-        {
-            ['-hd'] = 2,
-        }
+        scale = 'letterbox',
+        fps = 60
     }
 }
